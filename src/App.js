@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Clue from './components/clue/clue';
+import GameBox from './components/game_box/game_box';
+import Keyboard from './components/keyboard/keyboard';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>WOCAB</h2>
+      <Clue row="1"/>
+      <GameBox />
+      <Keyboard />
     </div>
   );
 }
