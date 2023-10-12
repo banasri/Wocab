@@ -5,12 +5,13 @@ const initialState = {
     clue : "",
     wordLength : 5,
     current : 1,
+    word : "",
     words : {
-      word : "",
       word1: "",
       word2: "",
       word3: "",
-      word4: ""
+      word4: "",
+      word5: ""
     },
     alert: false,
     pass: false,
@@ -72,10 +73,7 @@ const clueReducer = (state = initialState, action) => {
             return { 
                 ...initialState,
                 clue : wordsClues[0]["clues"][index].clue,
-                words : {
-                  ...state.words,
-                  word : wordsClues[0]["clues"][index].word
-                },
+                word : wordsClues[0]["clues"][index].word,
                 wordLength : wordsClues[0]["clues"][index].word.length
             };
         case 'EDIT_WORD' :
@@ -86,7 +84,7 @@ const clueReducer = (state = initialState, action) => {
             console.log("action.letter - " + action);
             console.log(action);
             console.log("state.wordLength - " + state.wordLength);
-            if (action.payload == "DEL") {
+            if (action.payload === "DEL") {
               return {
                 ...state,
                 words: {
@@ -95,7 +93,7 @@ const clueReducer = (state = initialState, action) => {
                 }  
               };
             }
-            if (state.words[pos].length != state.wordLength) {
+            if (state.words[pos].length !== state.wordLength) {
               console.log("action");
               console.log(action);
               console.log("action.payload");
@@ -125,15 +123,15 @@ const clueReducer = (state = initialState, action) => {
               console.log("valid word");
               console.log("CHECK_WORD, keyyy.length, state.wordLength, keyyy",
                keyyy.length, state.wordLength, keyyy);
-              if ((keyyy.length == state.wordLength) & (keyyy == state.words.word.toLowerCase())) {
+              if ((keyyy.length === state.wordLength) & (keyyy === state.word.toLowerCase())) {
                 return {
                   ...state,
                   pass: true,
                   gameOver: true,
                   current: state.current + 1,
                 };
-              } else if (keyyy.length == state.wordLength) {
-                if (state.current == 4) {
+              } else if (keyyy.length === state.wordLength) {
+                if (state.current === 4) {
                   return {
                     ...state,
                     gameOver: true,
@@ -161,12 +159,31 @@ const clueReducer = (state = initialState, action) => {
           console.log("in SET_KEYCOLOR");
           console.log("action", action)
           const key = action.key;
+          console.log("action.key, action.color", action.key, action.color);
+          console.log("letterColors[action.key]", state.letterColors[action.key]);
+          if( state.letterColors[action.key] === "#6aaa64") {
+            return {
+              ...state
+            };
+          } else {
+            return {
+              ...state,
+              letterColors: {
+                ...state.letterColors,
+                [key]: action.color,
+              },
+            };
+          }
+          
+        case "CLEAR_ALERT":
           return {
             ...state,
-            letterColors: {
-              ...state.letterColors,
-              [key]: action.color,
-            },
+            alert: false,
+          };
+        case "REFRESH":
+          return {
+            ...initialState,
+            tryAgain: !state.tryAgain,
           };
         default:
             return state;

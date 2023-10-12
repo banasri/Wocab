@@ -10,7 +10,7 @@ function Clue(props) {
    });
 
    const word = useSelector((state)=>{
-    return state.words.word;
+    return state.word;
    });
 
   //initialise the hook
@@ -30,7 +30,7 @@ function Clue(props) {
   return (
     <div>
       <h2>Clue : {clue}</h2>
-      <h2>Word : {word}</h2>
+      {/* <h2>Word : {word}</h2> */}
     </div>
   )
 }
