@@ -130,8 +130,8 @@ const clueReducer = (state = initialState, action) => {
                   gameOver: true,
                   current: state.current + 1,
                 };
-              } else if (keyyy.length === state.wordLength) {
-                if (state.current === 4) {
+              } else if (keyyy.length >= 4 && keyyy.length <= state.wordLength) {
+                if (state.current === 5) {
                   return {
                     ...state,
                     gameOver: true,

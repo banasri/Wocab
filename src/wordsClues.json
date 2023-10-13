@@ -2,9 +2,9 @@
     {
         "clues":[
             { "id": 1, "clue" : "Cleaning the dishes is my least favorite _____.", "word" : "chore" }, 
-            { "id": 2, "clue" : "The ______ traveled through the desert.", "word" : "camel" }, 
-            { "id": 3, "clue" : "A synonym for obstacle.", "word" : "fence" }, 
-            { "id": 4, "clue" : "The banquet was a ______, luxurious meal.", "word" : "tasty" }
+            { "id": 2, "clue" : "The ______ traveled through the desert.", "word" : "caravan" }, 
+            { "id": 3, "clue" : "A synonym for obstacle.", "word" : "hurdle" }, 
+            { "id": 4, "clue" : "The banquet was a ______, luxurious meal.", "word" : "sumptuous" }
         ]
     }
 ]
