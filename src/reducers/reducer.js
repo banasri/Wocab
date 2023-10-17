@@ -118,7 +118,7 @@ const clueReducer = (state = initialState, action) => {
             console.log("inside Reducer : CHECK_WORD");
             let keyyy = "word" + state.current;
             console.log("state.words", state.words)
-            keyyy = state.words[keyyy].toLowerCase();
+            keyyy = state.words[keyyy].toLowerCase().trim();
             if (validWords[0]["words"].includes(keyyy)) {
               console.log("valid word");
               console.log("CHECK_WORD, keyyy.length, state.wordLength, keyyy",
@@ -163,6 +163,11 @@ const clueReducer = (state = initialState, action) => {
           console.log("action.key, action.color", action.key, action.color);
           console.log("letterColors[action.key]", state.letterColors[action.key]);
           if( state.letterColors[action.key] === "#6aaa64") {
+            return {
+              ...state
+            };
+          } else if (state.letterColors[action.key] === "#c9b458" && 
+          action.color === "#787c7e") {
             return {
               ...state
             };

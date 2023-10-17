@@ -45,6 +45,8 @@ function GameTile(props) {
         realWord = replaceChar(realWord, ' ', index);
         return "tile green";
       } else if (realWord.toLowerCase().includes(props.word.toLowerCase()[index])) {
+        const ind = realWord.toLowerCase().indexOf(props.word.toLowerCase()[index]);
+        realWord = replaceChar(realWord, ' ', ind);
         console.log("yellow");
         setkeycolor(props.word[index], "#c9b458");
         return "tile yellow";
