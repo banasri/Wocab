@@ -66,8 +66,10 @@ const clueReducer = (state = initialState, action) => {
   console.log(state);
     switch(action.type) {
         case 'SET_WORD' : 
+            const clueSize = wordsClues[0]["clues"].length;
+            console.log("clueSize", clueSize);
             console.log("inside clueReducer : SET_WORD");
-            const index = Math.floor((Math.random() * 4));
+            const index = Math.floor((Math.random() * clueSize));
             console.log("index : " + index);
             console.log(wordsClues[0]);
             return { 
@@ -131,7 +133,7 @@ const clueReducer = (state = initialState, action) => {
                   current: state.current + 1,
                 };
               } else if (keyyy.length >= 4 && keyyy.length <= state.wordLength) {
-                if (state.current === 4) {
+                if (state.current === 5) {
                   return {
                     ...state,
                     gameOver: true,
@@ -150,7 +152,7 @@ const clueReducer = (state = initialState, action) => {
                 ...state,
                 alert: true,
               };
-            }
+            };
             // console.log("here 222222222222222222");
             // return {
             //   ...state,
