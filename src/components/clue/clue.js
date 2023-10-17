@@ -1,5 +1,5 @@
 import React from 'react'
-//import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 
 function Clue(props) {
@@ -10,8 +10,6 @@ function Clue(props) {
    });
 
    const word = useSelector((state)=>{
-    console.log("in clue.js useSelector :word ");
-    console.log("word", state.word);
     return state.word;
    });
 
@@ -21,16 +19,13 @@ function Clue(props) {
     dispatch({type:'SET_WORD'});
   };
 
-  // IMP: useEffect removal resulted in infinite loop.
-  // useEffect(() => {
-  //   // console.log("props");
-  //   // console.log(props);
-  //   console.log("clue.js - in useEffect ");
-  //   setWord();
-  // }, []);
-  if(word === ""){
+  useEffect(() => {
+    // console.log("props");
+    // console.log(props);
+    console.log("clue.js - in useEffect ");
     setWord();
-  };
+  }, []);
+
 
   return (
     <div>

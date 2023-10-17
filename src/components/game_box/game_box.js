@@ -11,6 +11,7 @@ function GameBox() {
     console.log("inside gamebox word useSelector");
     return state.word;
   });
+
   console.log("inside gamebox");
   console.log(word, words.word1, words.word2, words.word3, words.word4, words.word5);
   return (

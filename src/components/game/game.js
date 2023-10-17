@@ -26,9 +26,7 @@ const Game = (props) => {
   
 
    const word = useSelector((state)=>{
-    console.log("in game.js useSelector :word ");
-    console.log("word", state.word);
-    return state.word;
+    return state.words.word;
    });
   //initialise the hook
   const dispatch = useDispatch();

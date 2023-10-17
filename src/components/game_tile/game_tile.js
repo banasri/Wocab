@@ -8,9 +8,7 @@ function GameTile(props) {
    console.log(props);
    
    let realWord = props.realword;
-   const wordLength = realWord.length;
-   console.log("GameTile11111 : wordLength " , wordLength);
-   let output = realWord.split('');
+   const realWordArr = realWord.split("");
 
    const current = useSelector((state)=>{
     return state.current;
@@ -45,13 +43,9 @@ function GameTile(props) {
         console.log("green");
         setkeycolor(props.word[index], "#6aaa64");
         realWord = replaceChar(realWord, ' ', index);
-        console.log("realWord", realWord);
         return "tile green";
       } else if (realWord.toLowerCase().includes(props.word.toLowerCase()[index])) {
-        const indexOfChar = realWord.toLowerCase().indexOf(props.word.toLowerCase()[index]);
-        realWord = replaceChar(realWord, ' ', indexOfChar);
         console.log("yellow");
-        console.log("realWord", realWord);
         setkeycolor(props.word[index], "#c9b458");
         return "tile yellow";
       } else {
@@ -65,11 +59,26 @@ function GameTile(props) {
   };
   return (
       <section>
-        {output.map((item, index) => (
-          <div className={props.word[index] ? checkvalidity(index) : "tile"}>
-            {props.word ? props.word[index] : null}
+      {realWordArr.map((item,index) => {
+        return (<div className={props.word[index] ? checkvalidity(index) : "tile"}>
+          {props.word ? props.word[index] : null}
+        </div>)
+      } )}
+        {/* <div className={props.word[0] ? checkvalidity(0) : "tile"}>
+          {props.word ? props.word[0] : null}
         </div>
-        ))}
+        <div className={props.word[1] ? checkvalidity(1) : "tile"}>
+          {props.word ? props.word[1] : null}
+        </div>
+        <div className={props.word[2] ? checkvalidity(2) : "tile"}>
+          {props.word ? props.word[2] : null}
+        </div>
+        <div className={props.word[3] ? checkvalidity(3) : "tile"}>
+          {props.word ? props.word[3] : null}
+        </div>
+        <div className={props.word[4] ? checkvalidity(4) : "tile"}>
+          {props.word ? props.word[4] : null}
+        </div> */}
       </section>
     // <div>
     //     <div className={props.word[0] ? checkvalidity(0) : "tile"}>

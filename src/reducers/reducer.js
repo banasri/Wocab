@@ -131,7 +131,7 @@ const clueReducer = (state = initialState, action) => {
                   current: state.current + 1,
                 };
               } else if (keyyy.length >= 4 && keyyy.length <= state.wordLength) {
-                if (state.current === 5) {
+                if (state.current === 4) {
                   return {
                     ...state,
                     gameOver: true,
@@ -145,16 +145,17 @@ const clueReducer = (state = initialState, action) => {
                 };
               }
             } else {
+              console.log("here 11111111111111111");
               return {
                 ...state,
                 alert: true,
               };
             }
-      
-            return {
-              ...state,
-              alert: true,
-            };
+            // console.log("here 222222222222222222");
+            // return {
+            //   ...state,
+            //   alert: true,
+            // };
         case "SET_KEYCOLOR":
           console.log("in SET_KEYCOLOR");
           console.log("action", action)

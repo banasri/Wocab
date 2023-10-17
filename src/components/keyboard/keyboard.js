@@ -7,7 +7,7 @@ function Keyboard() {
 
     const letterColors = useSelector((state)=>{
       console.log("inside keyboard useSelector");
-    return state.letterColors;
+      return state.letterColors;
     });
 
     const dispatch = useDispatch();
@@ -22,7 +22,8 @@ function Keyboard() {
       console.log(event.key);
       if (event.key === "Enter"){
         dispatch({type:'CHECK_WORD'});
-      } else if (event.key === "Delete") {
+        event.preventDefault();
+      } else if (event.key === "Delete" || event.key === "Backspace" ) {
         dispatch({type:'EDIT_WORD', payload : "DEL"});
       } else if (
         ((event.key == 'a') || (event.key == 'A')) ||
@@ -50,7 +51,8 @@ function Keyboard() {
         ((event.key == 'w') || (event.key == 'W')) ||
         ((event.key == 'x') || (event.key == 'X')) ||
         ((event.key == 'y') || (event.key == 'Y')) ||
-        ((event.key == 'z') || (event.key == 'Z')) 
+        ((event.key == 'z') || (event.key == 'Z')) ||
+        (event.key == ' ')
                 )
       {
         console.log("when any letter is pressed");
@@ -62,6 +64,7 @@ function Keyboard() {
     
     const onEdit = (event) => {
         console.log("onEdit Event");
+        console.log(event);
         console.log(event.target.dataset);
 
         if (event.target.dataset.check) {
@@ -71,6 +74,7 @@ function Keyboard() {
           if (event.target.dataset.value) {
             dispatch({type:'EDIT_WORD', payload : event.target.dataset.value});
           }
+          event.currentTarget.blur();
    
     };
     
@@ -196,14 +200,6 @@ function Keyboard() {
         </div>
         <div className="key-row row-three" onClick={onEdit}>
           <button
-            data-check="\n"
-            style={{
-              "min-width": "50px",
-            }}
-          >
-            ENTER
-          </button>
-          <button
             data-value="Z"
             style={{ backgroundColor: letterColors["Z"] }}
           >
@@ -245,6 +241,12 @@ function Keyboard() {
           >
             M
           </button>
+        </div>
+        <div className="key-row row-three" onClick={onEdit}>
+          <button data-check="\n">
+            ENTER
+          </button>
+          <button data-value=" ">Space Bar</button>
           <button data-value="DEL">DEL</button>
         </div>
       </section>
