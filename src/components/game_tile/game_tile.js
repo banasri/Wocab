@@ -50,6 +50,9 @@ function GameTile(props) {
         console.log("yellow");
         setkeycolor(props.word[index], "#c9b458");
         return "tile yellow";
+      } else if (props.word.toLowerCase()[index] === " ") 
+      {
+        return "tile";
       } else {
         console.log("grey");
         setkeycolor(props.word[index], "#787c7e");
