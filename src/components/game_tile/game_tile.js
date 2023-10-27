@@ -46,6 +46,16 @@ function GameTile(props) {
         return "tile green";
       } else if (realWord.toLowerCase().includes(props.word.toLowerCase()[index])) {
         const ind = realWord.toLowerCase().indexOf(props.word.toLowerCase()[index]);
+        if (props.word.toLowerCase()[ind] === realWord.toLowerCase()[ind]) {
+          const charAtInd = props.word.toLowerCase()[ind];
+          realWord = replaceChar(realWord, ' ', ind);
+          if (realWord.toLowerCase().indexOf(props.word.toLowerCase()[index]) < 0) {
+            realWord = replaceChar(realWord, charAtInd, ind);
+            return "tile grey";
+          } else {
+            return "tile yellow";
+          }
+        }
         realWord = replaceChar(realWord, ' ', ind);
         console.log("yellow");
         setkeycolor(props.word[index], "#c9b458");
