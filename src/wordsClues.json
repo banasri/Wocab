@@ -1,6 +1,9 @@
 [
     {
         "clues":[
+            { "id": 7, "clue" : "God is _______", "word" : "omnipresent" }
+        ],
+        "oldClues" : [
             { "id": 1, "clue" : "Cleaning the dishes is my least favorite _____.", "word" : "chore" }, 
             { "id": 2, "clue" : "The ______ traveled through the desert.", "word" : "caravan" }, 
             { "id": 3, "clue" : "A synonym for obstacle.", "word" : "hurdle" }, 
@@ -8,5 +11,6 @@
             { "id": 5, "clue" : "Healthy body and ______ mind.", "word" : "sound" },
             { "id": 6, "clue" : "Polar bears are on the ______ of extinction.", "word" : "verge" }
         ]
+
     }
 ]

@@ -241,7 +241,7 @@ function Keyboard() {
             M
           </button>
         </div>
-        <div className="key-row row-three" onClick={onEdit}>
+        <div className="key-row row-four" onClick={onEdit}>
           <button data-check="\n">
             ENTER
           </button>

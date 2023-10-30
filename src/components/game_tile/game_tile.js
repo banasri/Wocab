@@ -74,11 +74,14 @@ function GameTile(props) {
   };
   return (
       <section>
+      <div class="wordrow">
       {realWordArr.map((item,index) => {
         return (<div className={props.word[index] ? checkvalidity(index) : "tile"}>
           {props.word ? props.word[index] : null}
         </div>)
       } )}
+      </div>
+      
         {/* <div className={props.word[0] ? checkvalidity(0) : "tile"}>
           {props.word ? props.word[0] : null}
         </div>
