@@ -55,9 +55,6 @@
     .gamebox{
       flex-basis: 40%;
     }
-    header{
-      flex-basis: 10%;
-    }
   
     .keyboard {
       flex-basis: 40% !important
