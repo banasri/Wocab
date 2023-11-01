@@ -78,8 +78,8 @@ function Keyboard() {
     };
     
   return (
-    <section className="keyboard">
-        <div className="key-row row-one" onClick={onEdit}>
+    <section className="keyboard1">
+        <div className="key-row" onClick={onEdit}>
           <button
             data-value="Q"
             style={{ backgroundColor: letterColors["Q"] }}
@@ -141,7 +141,7 @@ function Keyboard() {
             P
           </button>
         </div>
-        <div className="key-row row-two" onClick={onEdit}>
+        <div className="key-row" onClick={onEdit}>
           <button
             data-value="A"
             style={{ backgroundColor: letterColors["A"] }}
@@ -197,7 +197,7 @@ function Keyboard() {
             L
           </button>
         </div>
-        <div className="key-row row-three" onClick={onEdit}>
+        <div className="key-row" onClick={onEdit}>
           <button
             data-value="Z"
             style={{ backgroundColor: letterColors["Z"] }}
@@ -241,7 +241,7 @@ function Keyboard() {
             M
           </button>
         </div>
-        <div className="key-row row-four" onClick={onEdit}>
+        <div className="key-row" onClick={onEdit}>
           <button data-check="\n">
             ENTER
           </button>

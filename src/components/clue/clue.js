@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
-
+import "./clue.css";
 function Clue(props) {
 
   const clue = useSelector((state)=>{
@@ -29,7 +29,7 @@ function Clue(props) {
 
   return (
     <div>
-      <h2>Clue : {clue}</h2>
+      <h2 className="clue">Clue : {clue}</h2>
       {/* <h2>Word : {word}</h2> */}
     </div>
   )

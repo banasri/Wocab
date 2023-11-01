@@ -8,34 +8,19 @@
   justify-content: space-between;
 }
 
-.keyboard{
+.keyboard1{
   flex-basis: 30%;
+  margin-bottom: 5%;
 }
-
 
 
 @media (max-width: 738px) {
   
-  .keyboard{
+  .keyboard1{
     width: 85%;
-  }
-  /* .row-one > button {
-    width: calc(100%/12);
+    margin-bottom: 5%;
   }
   
-  .row-two{
-    width: 85%;
-  }
-  .row-two > button {
-    width: calc(100%/10);
-  }
-  
-  .row-three > button {
-    width: calc((100%)/10);
-  }
-  .row-four > button {
-    width: calc((100%)/4);
-  } */
   button {
     font-family: inherit;
     font-weight: bold;

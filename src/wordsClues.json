@@ -1,15 +1,18 @@
 [
     {
-        "clues":[
-            { "id": 7, "clue" : "God is _______", "word" : "omnipresent" }
+        "testClues":[
+            { "id": 1, "clue" : "God is _______", "word" : "omnipresent" },
+            { "id": 2, "clue" : "God is _______", "word" : "good" }
         ],
-        "oldClues" : [
+        "clues" : [
             { "id": 1, "clue" : "Cleaning the dishes is my least favorite _____.", "word" : "chore" }, 
             { "id": 2, "clue" : "The ______ traveled through the desert.", "word" : "caravan" }, 
             { "id": 3, "clue" : "A synonym for obstacle.", "word" : "hurdle" }, 
             { "id": 4, "clue" : "The banquet was a ______, luxurious meal.", "word" : "sumptuous" },
             { "id": 5, "clue" : "Healthy body and ______ mind.", "word" : "sound" },
-            { "id": 6, "clue" : "Polar bears are on the ______ of extinction.", "word" : "verge" }
+            { "id": 6, "clue" : "Polar bears are on the ______ of extinction.", "word" : "verge" },
+            { "id": 7, "clue" : "God is _______", "word" : "omnipresent" },
+            { "id": 8, "clue" : "God is _______", "word" : "good" }
         ]
 
     }
