@@ -3,6 +3,9 @@ import validWords from "../../src/validWords.json";
 
 const initialState = {
     clue : "",
+    clueType : "",
+    meaning : "",
+    example : "",
     wordLength : 5,
     current : 1,
     word : "",
@@ -76,6 +79,9 @@ const clueReducer = (state = initialState, action) => {
                 ...initialState,
                 clue : wordsClues[0]["clues"][index].clue,
                 word : wordsClues[0]["clues"][index].word,
+                clueType : wordsClues[0]["clues"][index].clueType,
+                meaning : wordsClues[0]["clues"][index].meaning,
+                example : wordsClues[0]["clues"][index].example,
                 wordLength : wordsClues[0]["clues"][index].word.length
             };
         case 'EDIT_WORD' :

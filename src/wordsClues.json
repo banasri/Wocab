@@ -1,10 +1,10 @@
 [
     {
-        "testClues":[
-            { "id": 1, "clue" : "God is _______", "word" : "omnipresent" },
-            { "id": 2, "clue" : "God is _______", "word" : "good" }
+        "clues":[
+            { "id": 1, "clue" : "God is _______", "word" : "omnipresent", "clueType" : "F", "meaning" : "present everywhere", "example" : "Technology has made information omnipresent."},
+            { "id": 2, "clue" : "God is _______", "word" : "good", "clueType" : "F", "meaning" : "of high quality", "example" : "She is a very good girl"} 
         ],
-        "clues" : [
+        "oldclues" : [
             { "id": 1, "clue" : "Cleaning the dishes is my least favorite _____.", "word" : "chore" }, 
             { "id": 2, "clue" : "The ______ traveled through the desert.", "word" : "caravan" }, 
             { "id": 3, "clue" : "A synonym for obstacle.", "word" : "hurdle" }, 
