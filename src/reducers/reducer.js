@@ -2,6 +2,7 @@ import wordsClues from "../../src/wordsClues.json";
 import validWords from "../../src/validWords.json";
 
 const initialState = {
+    isLoggedIn : false,
     clue : "",
     clueType : "",
     meaning : "",
