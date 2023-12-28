@@ -23,7 +23,7 @@ function GameBox() {
   console.log("inside gamebox");
   console.log(word, words.word1, words.word2, words.word3, words.word4, words.word5);
   return (
-    <div class="gamebox" className={className}>
+    <div className={className}>
       <GameTile word={words.word1} realword={word} row="1" />
       <GameTile word={words.word2} realword={word} row="2" />
       <GameTile word={words.word3} realword={word} row="3" />

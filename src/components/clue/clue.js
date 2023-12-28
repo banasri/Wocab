@@ -5,32 +5,32 @@ import "./clue.css";
 function Clue(props) {
 
   const clue = useSelector((state)=>{
-    console.log("inside clue useSelector");
+    //console.log("inside clue useSelector");
     return state.clue;
    });
 
-   const word = useSelector((state)=>{
-    return state.word;
+   const wordIndex = useSelector((state)=>{
+    //console.log("inside wordIndex useSelector");
+    return state.wordIndex;
    });
+
+   const todayWords = useSelector((state) => {
+    return state.todayWords;
+   })
 
   //initialise the hook
   const dispatch = useDispatch();
-  const setWord = () => {
-    dispatch({type:'SET_WORD'});
-  };
 
   useEffect(() => {
-    // console.log("props");
-    // console.log(props);
-    console.log("clue.js - in useEffect ");
-    setWord();
-  }, []);
+    if (todayWords && todayWords.length > 0) {
+      dispatch({type:'SET_WORD'});
+    }
+  }, [todayWords, dispatch]);
 
 
   return (
     <div>
-      <h2 className="clue">Clue : {clue}</h2>
-      {/* <h2>Word : {word}</h2> */}
+      <h2 className="clue">Word {wordIndex + 1} of 3, Clue : {clue}</h2>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import "../gameover/game_over.css";
 
 const GameOver = (props) => {
@@ -8,14 +8,17 @@ const GameOver = (props) => {
     //initialise the hook
   const dispatch = useDispatch();
   const setRefresh = () => {
-    dispatch({ type: "REFRESH" });
+    console.log("Gameover : TRY AGAIN ");
+    dispatch({type:'SET_WORD'});
+    //dispatch({ type: "REFRESH" });
   };
-  const { word, clue, clueType, meaning, example } = useSelector((state) => ({
+  const { word, clue, meaning, sentence, wordIndex } = useSelector((state) => ({
     word: state.word,
     clue: state.clue,
-    clueType : state.clueType, 
+    //clueType : state.clueType, 
     meaning : state.meaning,
-    example : state.example
+    sentence : state.sentence,
+    wordIndex : state.wordIndex
   }));
   
   return (
@@ -42,14 +45,15 @@ const GameOver = (props) => {
             <p
               style={{ color: "blue"}}
             >
-              Example Sentence : {example}
+              Example Sentence : {sentence}
             </p>
-            <p
+            {wordIndex < 2 ? <p
                onClick={setRefresh}
                style={{ color: "blue", textDecoration: "underline" , cursor: "pointer"}}
              >
                Play again
-           </p>
+           </p> : <p>Come again tomorrow!</p>}
+            
           </div>
         ) : (
           <div style={{ color: "red" }}>
@@ -69,14 +73,15 @@ const GameOver = (props) => {
             <p
               style={{ color: "blue"}}
             >
-              Example Sentence : {example}
+              Example Sentence : {sentence}
             </p>
-            <p
+            {wordIndex < 2 ? <p
                onClick={setRefresh}
                style={{ color: "blue", textDecoration: "underline" , cursor: "pointer"}}
              >
                Try again
-           </p>
+           </p> : <p>Come again tomorrow!</p>}
+            
           </div>
         )}
       </section>

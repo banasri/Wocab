@@ -1,5 +1,5 @@
 import Instructions from "../instructions/instructions";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./game.css";
 import Header from "../header/header";
 import GameBox from "../game_box/game_box";
@@ -7,10 +7,13 @@ import Keyboard from "../keyboard/keyboard";
 import Clue from "../clue/clue";
 import { useSelector, useDispatch } from "react-redux";
 import GameOver from "../gameover/game-over";
+import { db } from "../../firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const Game = (props) => {
   const [showModal, setShowModal] = useState(true);
   const [showWord, setShowWord] = useState(true);
+
   const pass = useSelector((state)=>{
     return state.pass;
    });
@@ -20,33 +23,58 @@ const Game = (props) => {
   const alert = useSelector((state)=>{
     return state.alert;
    });
-  const tryAgain = useSelector((state)=>{
-    return state.tryAgain;
-   });
   
-
    const word = useSelector((state)=>{
-    return state.words.word;
+    return state.word;
    });
   //initialise the hook
   const dispatch = useDispatch();
-  const setWord = () => {
-    dispatch({type:'SET_WORD'});
-  };
+  
   const onChangeAlert = () => {
     dispatch({ type: "CLEAR_ALERT" })
   };
 
-  if (tryAgain) {
-    console.log("game.js in tryAgain");
-    setWord();
-    setShowWord(true);
-  }
-  // useEffect(() => {
-  //   console.log("game.js in use effect");
-  //   setWord();
-  //   setShowWord(true);
-  // }, [tryAgain]);
+  useEffect(() => {
+      console.log("game.js in tryAgain");
+      setShowWord(true);
+    //}
+  }, []);
+  
+
+  useEffect(() => {
+    console.log("11111111111111111111111");
+    const todayWords = [];
+    let dateString = process.env.REACT_APP_LIVE_DT;
+    const [year, month, day] = dateString.split('-').map(Number);
+    let today = new Date();
+    let liveDate = new Date(year, month - 1, day);
+
+    // Calculate the difference in milliseconds
+    const differenceInMilliseconds = today - liveDate;
+
+    // Convert the difference to days
+    const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+    const dateFactor = Math.floor(differenceInDays) + 1;
+    const startId = dateFactor * 3 - 2;
+    const endId = dateFactor * 3;
+    
+    const fetchData = async () => {
+      try {
+        const q = query(collection(db, "wordList"), where("id", ">=", startId), 
+                                                    where("id", "<=", endId));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          todayWords.push(doc.data());          
+        });
+        
+        dispatch({ type: "SET_WORDS", words: todayWords});
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
 
   if (alert) {
     setTimeout(() => {

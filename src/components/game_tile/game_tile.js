@@ -73,57 +73,15 @@ function GameTile(props) {
     return "tile";
   };
   return (
-      <section>
-      <div class="wordrow">
+      <section key={props.row}>
+      <div className="wordrow">
       {realWordArr.map((item,index) => {
-        return (<div className={props.word[index] ? checkvalidity(index) : "tile"}>
+        return (<div key={index} className={props.word[index] ? checkvalidity(index) : "tile"}>
           {props.word ? props.word[index] : null}
         </div>)
       } )}
       </div>
-      
-        {/* <div className={props.word[0] ? checkvalidity(0) : "tile"}>
-          {props.word ? props.word[0] : null}
-        </div>
-        <div className={props.word[1] ? checkvalidity(1) : "tile"}>
-          {props.word ? props.word[1] : null}
-        </div>
-        <div className={props.word[2] ? checkvalidity(2) : "tile"}>
-          {props.word ? props.word[2] : null}
-        </div>
-        <div className={props.word[3] ? checkvalidity(3) : "tile"}>
-          {props.word ? props.word[3] : null}
-        </div>
-        <div className={props.word[4] ? checkvalidity(4) : "tile"}>
-          {props.word ? props.word[4] : null}
-        </div> */}
       </section>
-    // <div>
-    //     <div className={props.word[0] ? checkvalidity(0) : "tile"}>
-    //       {props.word ? props.word[0] : null}
-    //     </div>
-    //     <div className={props.word[1] ? checkvalidity(1) : "tile"}>
-    //       {props.word ? props.word[1] : null}
-    //     </div>  
-    //     <div className={props.word[2] ? checkvalidity(2) : "tile"}>
-    //       {props.word ? props.word[2] : null}
-    //     </div>
-    //     <div className={props.word[3] ? checkvalidity(3) : "tile"}>
-    //       {props.word ? props.word[3] : null}
-    //     </div>
-    //     <div className={props.word[4] ? checkvalidity(4) : "tile"}>
-    //       {props.word ? props.word[4] : null}
-    //     </div>
-    //     <div className={props.word[5] ? checkvalidity(5) : "tile"}>
-    //       {props.word ? props.word[5] : null}
-    //     </div>
-    //     <div className={props.word[6] ? checkvalidity(6) : "tile"}>
-    //       {props.word ? props.word[6] : null}
-    //     </div>
-    //     <div className={props.word[7] ? checkvalidity(7) : "tile"}>
-    //       {props.word ? props.word[7] : null}
-    //     </div>
-    // </div>
   )
 }
 

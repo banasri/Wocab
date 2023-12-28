@@ -1,12 +1,15 @@
-import wordsClues from "../../src/wordsClues.json";
+//import wordsClues from "../../src/wordsClues.json";
 import validWords from "../../src/validWords.json";
 
 const initialState = {
+    maxGame : 3,
+    todaysWords : [], 
+    wordIndex : 0,
     isLoggedIn : false,
     clue : "",
     clueType : "",
     meaning : "",
-    example : "",
+    sentence : "",
     wordLength : 5,
     current : 1,
     word : "",
@@ -21,6 +24,7 @@ const initialState = {
     pass: false,
     tryAgain: false,
     gameOver: false,
+    showWord : true,
     letterColors: {
         Q: null,
         W: null,
@@ -69,22 +73,48 @@ const clueReducer = (state = initialState, action) => {
   console.log("state ");
   console.log(state);
     switch(action.type) {
-        case 'SET_WORD' : 
-            const clueSize = wordsClues[0]["clues"].length;
-            console.log("clueSize", clueSize);
-            console.log("inside clueReducer : SET_WORD");
-            const index = Math.floor((Math.random() * clueSize));
-            console.log("index : " + index);
-            console.log(wordsClues[0]);
+        case 'SET_WORDS' : 
+            console.log('2222222222222222222');
+            console.log(action);
+            const allWords = action.words;
+            const wordIndex = state.wordIndex;
+            // const clueSize = wordsClues[0]["clues"].length;
+            // console.log("clueSize", clueSize);
+            // console.log("inside clueReducer : SET_WORD");
+            // const index = Math.floor((Math.random() * clueSize));
+            // console.log("index : " + index);
+            // console.log(wordsClues[0]);
             return { 
                 ...initialState,
-                clue : wordsClues[0]["clues"][index].clue,
-                word : wordsClues[0]["clues"][index].word,
-                clueType : wordsClues[0]["clues"][index].clueType,
-                meaning : wordsClues[0]["clues"][index].meaning,
-                example : wordsClues[0]["clues"][index].example,
-                wordLength : wordsClues[0]["clues"][index].word.length
+                todaysWords : allWords,
+                clue : allWords[wordIndex].clue,
+                word : allWords[wordIndex].word,
+                //clueType : allWords[wordIndex].clueType,
+                meaning : allWords[wordIndex].meaning,
+                sentence : allWords[wordIndex].sentence,
+                wordLength : allWords[wordIndex].word.length
             };
+        case 'SET_WORD' :
+          let index = state.wordIndex + 1;
+          console.log("in SET_WORD .......");
+          console.log(state);
+          if(index === state.maxGame) {
+            return {
+              ...initialState,
+            }
+          }
+          return { 
+            ...initialState,
+            todaysWords : state.todaysWords,
+            wordIndex : index,
+            clue : state.todaysWords[index].clue,
+            word : state.todaysWords[index].word,
+            //clueType : allWords[wordIndex].clueType,
+            meaning : state.todaysWords[index].meaning,
+            sentence : state.todaysWords[index].sentence,
+            wordLength : state.todaysWords[index].word.length,
+            tryAgain: !state.tryAgain,
+          };               
         case 'EDIT_WORD' :
           console.log("inside clueReducer : EDIT_WORD"); 
         if (!state.pass) {
@@ -165,6 +195,7 @@ const clueReducer = (state = initialState, action) => {
             //   ...state,
             //   alert: true,
             // };
+            break;
         case "SET_KEYCOLOR":
           console.log("in SET_KEYCOLOR");
           console.log("action", action)
@@ -191,13 +222,18 @@ const clueReducer = (state = initialState, action) => {
           }
           
         case "CLEAR_ALERT":
+          console.log("in CLEAR_ALERT ...........");
           return {
             ...state,
             alert: false,
           };
         case "REFRESH":
+          console.log("in REFRESH ...........");
+          const newIndex = state.wordIndex + 1;
           return {
             ...initialState,
+            todaysWords : state.todaysWords,
+            wordIndex : newIndex,
             tryAgain: !state.tryAgain,
           };
         default:
